@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Property</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* CSS for centering the form */
+        #add-property-form {
+            margin: 0 auto;
+            width: 50%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add a New Property</h1>
+     <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="search.html">Search</a></li>
+            <li><a href="add.html">Add</a></li>
+            <li><a href="remove.html">Remove</a></li>
+        </ul>
+    </nav>
+    <!-- Centered form -->
+    <form id="add-property-form">
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" name="address" required><br><br>
+        <label for="price">Price:</label><br>
+        <input type="text" id="price" name="price" required><br><br>
+        <label for="type">Type:</label><br>
+        <input type="text" id="type" name="type" required><br><br>
+        <input type="submit" value="Add Property">
+    </form>
+    
+    <h2>Property List</h2>
+    <table id="properties-table">
+        <tr>
+            <th>ID</th>
+            <th>Address</th>
+            <th>Price</th>
+            <th>Type</th>
+        </tr>
+    </table>
+
+    <script>
+        document.getElementById('add-property-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            // Get the form values
+            var address = document.getElementById('address').value;
+            var price = document.getElementById('price').value;
+            var type = document.getElementById('type').value;
+
+            // Get the table and the number of rows to set the new ID
+            var table = document.getElementById('properties-table');
+            var rowCount = table.rows.length;
+
+            // Insert a new row at the end of the table
+            var newRow = table.insertRow(-1);
+
+            // Insert new cells in the row
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+
+            // Set the cell values
+            cell1.innerHTML = rowCount; // ID is row count
+            cell2.innerHTML = address;
+            cell3.innerHTML = price;
+            cell4.innerHTML = type;
+
+            // Clear the form inputs
+            document.getElementById('add-property-form').reset();
+        });
+    </script>
+    <footer>
+        <p>&copy; 2024 My Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>

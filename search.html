@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Properties</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Search Properties</h1>
+     <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="search.html">Search</a></li>
+            <li><a href="add.html">Add</a></li>
+            <li><a href="remove.html">Remove</a></li>
+        </ul>
+    </nav>
+    <h2>Search Properties</h2>
+    <form id="search-form">
+        <label for="search-input">Search by:</label><br>
+        <input type="text" id="search-input" name="search-input" onkeyup="searchProperties()"><br><br>
+    </form>
+    <h2>Search Results</h2>
+    <table id="properties-table">
+    <tr>
+        <th>ID</th>
+        <th>Address</th>
+        <th>Price</th>
+        <th>Type</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>123 Maple St</td>
+        <td>$500,000</td>
+        <td>House</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>456 Oak St</td>
+        <td>$350,000</td>
+        <td>Condo</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>789 Pine St</td>
+        <td>$250,000</td>
+        <td>Apartment</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>10 Sydney St</td>
+        <td>$700,000</td>
+        <td>House</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>20 Melbourne St</td>
+        <td>$600,000</td>
+        <td>Apartment</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>30 Brisbane St</td>
+        <td>$450,000</td>
+        <td>Condo</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>40 Perth St</td>
+        <td>$550,000</td>
+        <td>House</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>50 Adelaide St</td>
+        <td>$380,000</td>
+        <td>Apartment</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>60 Hobart St</td>
+        <td>$320,000</td>
+        <td>Condo</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>70 Darwin St</td>
+        <td>$280,000</td>
+        <td>House</td>
+    </tr>
+</table>
+
+    <script>
+        function searchProperties() {
+            // Get the input field and filter value
+            var input = document.getElementById('search-input');
+            var filter = input.value.toLowerCase();
+            
+            // Get the table and rows
+            var table = document.getElementById('properties-table');
+            var rows = table.getElementsByTagName('tr');
+            
+            // Loop through the rows and hide those that don't match the filter
+            for (var i = 1; i < rows.length; i++) {
+                var cells = rows[i].getElementsByTagName('td');
+                var address = cells[1].textContent || cells[1].innerText;
+                
+                if (address.toLowerCase().indexOf(filter) > -1) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+<footer>
+        <p>&copy; 2024 My Website. All rights reserved.</p>
+    </footer>
+</html>
